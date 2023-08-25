@@ -9,30 +9,30 @@ def search_keywords_in_docx_insensitive(file_path, keywords):
     for i, paragraph in enumerate(doc.paragraphs):
         for keyword in keywords:
             if keyword.lower() in paragraph.text.lower():
-                print("3. Found some insensitive materials in " + file_path)
+                print("- Found some matches in " + file_path)
                 # set starting offset to iterate upwards and find the heading containing the matched text
                 k = 1
                 while not doc.paragraphs[i-k].style.name.startswith('Heading'):
-                    print(".", end="")
+                    #print(".", end="")
                     k += 1
                 if doc.paragraphs[i-k].style.name.startswith('Heading'):
-                    print("1. Found in heading: " + doc.paragraphs[i-k].text)
-                print("2. Matched Paragraph: " + doc.paragraphs[i].text)
+                    print("\t1. Found under heading: " + doc.paragraphs[i-k].text)
+                print("\t2. Matched Paragraph: " + doc.paragraphs[i].text)
 
 def search_keywords_in_docx(file_path, keywords):
     doc = docx.Document(file_path)
     for i, paragraph in enumerate(doc.paragraphs):
         for keyword in keywords:
             if keyword in paragraph.text:
-                print("3. Found some insensitive materials in " + file_path)
+                print("- Found some matches in " + file_path)
                 # set starting offset to iterate upwards and find the heading containing the matched text
                 k = 1
                 while not doc.paragraphs[i-k].style.name.startswith('Heading'):
-                    print(".", end="")
+                    #print(".", end="")
                     k += 1
                 if doc.paragraphs[i-k].style.name.startswith('Heading'):
-                    print("1. Found in heading: " + doc.paragraphs[i-k].text)
-                print("2. Matched Paragraph: " + doc.paragraphs[i].text)
+                    print("\t1. Found under heading: " + doc.paragraphs[i-k].text)
+                print("\t2. Matched Paragraph: " + doc.paragraphs[i].text)
 
 def process_directory(directory_path, keywords, case_insensitive):
     for root, _, files in os.walk(directory_path):
