@@ -10,3 +10,6 @@ To-Do:
 
 Case insensitive
 `python3 docx-searcher.py /path/to/directory/of/docx/files "<keyword>" -i`
+
+Regex (case insensitive)
+`python3 docx-searcher.py /path/to/directory/of/docx/files "<keyword>" -e`
